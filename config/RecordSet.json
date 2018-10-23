@@ -1,0 +1,343 @@
+[{
+    "id": "#address",
+    "type": "tag",
+    "name": "address",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#address')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "7wtejbVUBagGD33DmSIwK",
+    "type": "address",
+    "name": "Au p'tit creux",
+    "icon": "",
+    "number": "",
+    "rating": 5,
+    "created": "/Date(1540313182622)/",
+    "modified": "/Date(1540313182622)/",
+    "statusText1": "restaurant",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "address food fricassé frites moutarde",
+    "__metadata": {
+        "uri": "RecordSet('7wtejbVUBagGD33DmSIwK')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#bagel",
+    "type": "tag",
+    "name": "bagel",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#bagel')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "aWkd~KEbcObwU3SDD1Y_E",
+    "type": "contact",
+    "name": "Carl Jenkins",
+    "icon": "/images/contact/aWkd~KEbcObwU3SDD1Y_E.jpg",
+    "number": "(555) 123-3124",
+    "rating": 0,
+    "created": "/Date(1540313182622)/",
+    "modified": "/Date(1540313182622)/",
+    "statusText1": "carl.jenkins@starship-troopers.movie.com",
+    "statusState1": "None",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "contact starship male",
+    "__metadata": {
+        "uri": "RecordSet('aWkd~KEbcObwU3SDD1Y_E')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "RKF~nPod8F7kJEqjVtPkq",
+    "type": "contact",
+    "name": "Carmen Ibanez",
+    "icon": "/images/contact/RKF~nPod8F7kJEqjVtPkq.jpg",
+    "number": "(555) 135-6485",
+    "rating": 0,
+    "created": "/Date(1540313182622)/",
+    "modified": "/Date(1540313182622)/",
+    "statusText1": "carmen.ibanez@starship-troopers.movie.com",
+    "statusState1": "None",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "contact starship female",
+    "__metadata": {
+        "uri": "RecordSet('RKF~nPod8F7kJEqjVtPkq')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#contact",
+    "type": "tag",
+    "name": "contact",
+    "icon": "",
+    "number": "4",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#contact')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "PQnmWYaHyIbdcE9L8scZZ",
+    "type": "contact",
+    "name": "Dizzy Flores",
+    "icon": "/images/contact/PQnmWYaHyIbdcE9L8scZZ.jpg",
+    "number": "(555) 789-4385",
+    "rating": 0,
+    "created": "/Date(1540313182622)/",
+    "modified": "/Date(1540313182622)/",
+    "statusText1": "dizzy.flores@starship-troopers.movie.com",
+    "statusState1": "None",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "contact starship female",
+    "__metadata": {
+        "uri": "RecordSet('PQnmWYaHyIbdcE9L8scZZ')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#female",
+    "type": "tag",
+    "name": "female",
+    "icon": "",
+    "number": "2",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#female')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#food",
+    "type": "tag",
+    "name": "food",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#food')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#fricassé",
+    "type": "tag",
+    "name": "fricassé",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#fricassé')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#frites",
+    "type": "tag",
+    "name": "frites",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#frites')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "lNioy0Yg17Plt7OQeXKfa",
+    "type": "recipe",
+    "name": "Grandma Sherrill's Bagels",
+    "icon": "/images/recipe/lNioy0Yg17Plt7OQeXKfa.jpg",
+    "number": 180,
+    "rating": 4,
+    "created": "/Date(1540313182625)/",
+    "modified": "/Date(1540313182625)/",
+    "statusText1": "24",
+    "statusState1": "None",
+    "statusText2": "100m",
+    "statusState2": "None",
+    "tags": "recipe bagel salt",
+    "__metadata": {
+        "uri": "RecordSet('lNioy0Yg17Plt7OQeXKfa')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "eFL8gIe2jQKHuxrLP_zIh",
+    "type": "contact",
+    "name": "Johnny Rico",
+    "icon": "/images/contact/eFL8gIe2jQKHuxrLP_zIh.jpg",
+    "number": "(555) 648-1352",
+    "rating": 0,
+    "created": "/Date(1540313182621)/",
+    "modified": "/Date(1540313182621)/",
+    "statusText1": "johnny.rico@starship-troopers.movie.com",
+    "statusState1": "None",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "contact starship male",
+    "__metadata": {
+        "uri": "RecordSet('eFL8gIe2jQKHuxrLP_zIh')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#male",
+    "type": "tag",
+    "name": "male",
+    "icon": "",
+    "number": "2",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#male')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#moutarde",
+    "type": "tag",
+    "name": "moutarde",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#moutarde')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#recipe",
+    "type": "tag",
+    "name": "recipe",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#recipe')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#salt",
+    "type": "tag",
+    "name": "salt",
+    "icon": "",
+    "number": "1",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#salt')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#starship",
+    "type": "tag",
+    "name": "starship",
+    "icon": "",
+    "number": "4",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#starship')",
+        "type": "BUBU_CMS.Record"
+    }
+}, {
+    "id": "#tag",
+    "type": "tag",
+    "name": "tag",
+    "icon": "",
+    "number": "12",
+    "rating": 0,
+    "created": "/Date(0)/",
+    "modified": "/Date(0)/",
+    "statusText1": "",
+    "statusState1": "",
+    "statusText2": "",
+    "statusState2": "",
+    "tags": "",
+    "__metadata": {
+        "uri": "RecordSet('#tag')",
+        "type": "BUBU_CMS.Record"
+    }
+}]
