@@ -1,0 +1,17 @@
+<!-- Bootstrap the UI5 core library -->
+<script id="sap-ui-bootstrap"
+    src="../resources/sap-ui-core.js"
+    data-sap-ui-libs=""
+    data-sap-ui-theme=""
+    data-sap-ui-compatVersion="edge"
+    data-sap-ui-frameOptions='allow'> 	// NON-SECURE setting for testing environment
+</script>
+<script>
+    "use strict";
+    sap.ui.getCore().attachInit(function() {
+        sap.ui.define([
+        	"sap/ui/core/util/MockServer"
+        ], function (MockServer) {
+        });
+    });
+</script>
