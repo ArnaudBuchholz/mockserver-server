@@ -1,0 +1,54 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="BUBU_CMS">
+            <EntityType Name="Record">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="type" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="name" Type="Edm.String" Nullable="false" sap:creatable="true" sap:updatable="true" sap:sortable="true" sap:filterable="true" />
+                <Property Name="icon" Type="Edm.String" Nullable="true" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="false" />
+                <Property Name="number" Type="Edm.String" Nullable="true" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="true" />
+                <Property Name="rating" Type="Edm.Int64" Nullable="true" sap:creatable="true" sap:updatable="true" sap:sortable="true" sap:filterable="true" />
+                <Property Name="created" Type="Edm.DateTime" Nullable="false" sap:creatable="true" sap:updatable="false" sap:sortable="true" sap:filterable="true" />
+                <Property Name="modified" Type="Edm.DateTime" Nullable="true" sap:creatable="true" sap:updatable="false" sap:sortable="true" sap:filterable="true" />
+                <Property Name="statusText1" Type="Edm.String" Nullable="true" sap:creatable="true" sap:updatable="false" sap:sortable="false" sap:filterable="true" />
+                <Property Name="statusState1" Type="Edm.String" Nullable="true" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="statusText2" Type="Edm.String" Nullable="true" sap:creatable="true" sap:updatable="false" sap:sortable="false" sap:filterable="true" />
+                <Property Name="statusState2" Type="Edm.String" Nullable="true" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="tags" Type="Edm.String" Nullable="true" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <NavigationProperty Name="toContent" Relationship="BUBU_CMS.RecordtoContent" FromRole="FromRole_RecordtoContent" ToRole="ToRole_RecordtoContent" />
+            </EntityType>
+            <Association Name="RecordtoContent" sap:content-version="1">
+                <End Type="BUBU_CMS.Record" Multiplicity="0..1" Role="FromRole_RecordtoContent" />
+                <End Type="BUBU_CMS.Content" Multiplicity="0..1" Role="ToRole_RecordtoContent" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RecordtoContent">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="ToRole_RecordtoContent">
+                        <PropertyRef Name="recordId" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Content">
+                <Key>
+                    <PropertyRef Name="recordId" />
+                    <PropertyRef Name="type" />
+                </Key>
+                <Property Name="recordId" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="type" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="data" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityContainer Name="BUBU_CMS_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="RecordSet" EntityType="BUBU_CMS.Record" />
+                <AssociationSet Name="RecordtoContentSet" Association="BUBU_CMS.RecordtoContent" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RecordSet" Role="FromRole_RecordtoContent" />
+                    <End EntitySet="ContentSet" Role="ToRole_RecordtoContent" />
+                </AssociationSet>
+                <EntitySet Name="ContentSet" EntityType="BUBU_CMS.Content" />
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
