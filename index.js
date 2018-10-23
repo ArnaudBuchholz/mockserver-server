@@ -12,7 +12,7 @@ class ResourceLoader extends jsdom.ResourceLoader {
     console.log(url)
     if (url.startsWith(openui5BaseUrl)) {
       return new Promise((resolve, reject) =>
-        fs.readFile(path.concat(openui5BaseDir, url.substr(openui5BaseUrlLength)), (err, data) => {
+        fs.readFile(path.join(openui5BaseDir, url.substr(openui5BaseUrlLength)), (err, data) => {
           if (err) {
             console.error("KO", err)
             reject(err)
