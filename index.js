@@ -1,7 +1,13 @@
+/* global process */
+require('colors')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 const fs = require('fs')
 const read = require('./read')
+
+process.on('unhandledRejection', error => {
+  console.log('unhandledRejection'.red, error.message.gray)
+})
 
 class ResourceLoader extends jsdom.ResourceLoader {
   fetch (url, options) {
