@@ -72,17 +72,17 @@ sap.ui.require([
   })
 
   // Trace requests
-  Object.keys(MockServer.HTTPMETHOD).forEach(function (sMethodName) {
-    var sMethod = MockServer.HTTPMETHOD[sMethodName]
-    _oMockServer.attachBefore(sMethod, function (oEvent) {
-      var oXhr = oEvent.getParameters().oXhr
-      console.log('MockServer::before', sMethod, oXhr.url, oXhr)
-    })
-    _oMockServer.attachAfter(sMethod, function (oEvent) {
-      var oXhr = oEvent.getParameters().oXhr
-      console.log('MockServer::after', sMethod, oXhr.url, oXhr)
-    })
-  })
+  // Object.keys(MockServer.HTTPMETHOD).forEach(function (sMethodName) {
+  //   var sMethod = MockServer.HTTPMETHOD[sMethodName]
+  //   _oMockServer.attachBefore(sMethod, function (oEvent) {
+  //     var oXhr = oEvent.getParameters().oXhr
+  //     console.log('MockServer::before', sMethod, oXhr.url, oXhr)
+  //   })
+  //   _oMockServer.attachAfter(sMethod, function (oEvent) {
+  //     var oXhr = oEvent.getParameters().oXhr
+  //     console.log('MockServer::after', sMethod, oXhr.url, oXhr)
+  //   })
+  // })
 
   // Generate random items
   var aTodoItemSet = _oMockServer.getEntitySetData(CONST.OData.entityNames.todoItemSet)
