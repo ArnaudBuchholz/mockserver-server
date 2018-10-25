@@ -45,25 +45,25 @@ window.ready = () => {
   console.log('Ready to test:'.yellow)
   // Basic tests
   const metadata = window.jQuery.sap.sjax({
-      type: "GET",
-      dataType: "text",
-      url: '/odata/TODO_SRV/$metadata'
+    type: 'GET',
+    dataType: 'text',
+    url: '/odata/TODO_SRV/$metadata'
   }).data
-  console.log('/odata/TODO_SRV/$metadata : ' + (metadata !== undefined && metadata.length ? "OK".green : "KO".red))
+  console.log('/odata/TODO_SRV/$metadata : ' + (metadata !== undefined && metadata.length ? 'OK'.green : 'KO'.red))
   const appconfig = window.jQuery.sap.sjax({
-      type: "GET",
-      dataType: "text",
-      url: '/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\')'
+    type: 'GET',
+    dataType: 'text',
+    url: '/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\')'
   }).data
-  console.log('/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\'): ' + (appconfig !== undefined && appconfig.length ? "OK".green : "KO".red))
+  console.log('/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\'): ' + (appconfig !== undefined && appconfig.length ? 'OK'.green : 'KO'.red))
   console.log(appconfig.grey)
   const results = window.jQuery.sap.sjax({
-      type: "GET",
-      dataType: "text",
-      url: '/odata/TODO_SRV/TodoItemSet'
+    type: 'GET',
+    dataType: 'text',
+    url: '/odata/TODO_SRV/TodoItemSet'
   }).data
-  console.log('/odata/TODO_SRV/TodoItemSet: ' + (results !== undefined && results.length ? "OK".green : "KO".red))
+  console.log('/odata/TODO_SRV/TodoItemSet: ' + (results !== undefined && results.length ? 'OK'.green : 'KO'.red))
   const records = JSON.parse(results).d.results
-  console.log((records.length + " records").gray)
+  console.log((records.length + ' records').gray)
   console.log(JSON.stringify(records[0]).gray)
 }
