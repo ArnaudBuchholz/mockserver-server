@@ -46,30 +46,52 @@ const browser = new JSDOM(fs.readFileSync('./index.html').toString(), {
   }
 })
 
+const test = (url, check) => {
+  const data = window.jQuery.sap.sjax({
+    type: 'GET',
+    dataType: 'text',
+    url: url
+  }).data
+  try {
+    const ok = data !== undefined && data.length && check(data)
+    console.log(url, ok ? 'OK'.green : 'KO'.red)
+  } catch (e) {
+    console.log(url, 'KO'.red, e)
+  }
+}
+
 const window = browser.window
 window.ready = () => {
   console.log('Ready to test:'.yellow)
+
   // Basic tests
-  const metadata = window.jQuery.sap.sjax({
-    type: 'GET',
-    dataType: 'text',
-    url: '/odata/TODO_SRV/$metadata'
-  }).data
-  console.log('/odata/TODO_SRV/$metadata : ' + (metadata !== undefined && metadata.length ? 'OK'.green : 'KO'.red))
-  const appconfig = window.jQuery.sap.sjax({
-    type: 'GET',
-    dataType: 'text',
-    url: '/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\')'
-  }).data
-  console.log('/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\'): ' + (appconfig !== undefined && appconfig.length ? 'OK'.green : 'KO'.red))
-  console.log(appconfig.grey)
-  const results = window.jQuery.sap.sjax({
-    type: 'GET',
-    dataType: 'text',
-    url: '/odata/TODO_SRV/TodoItemSet'
-  }).data
-  console.log('/odata/TODO_SRV/TodoItemSet: ' + (results !== undefined && results.length ? 'OK'.green : 'KO'.red))
-  const records = JSON.parse(results).d.results
-  console.log((records.length + ' records').gray)
-  console.log(JSON.stringify(records[0]).gray)
+  test('/odata/TODO_SRV/$metadata', () => true)
+  test('/odata/TODO_SRV/AppConfigurationSet(\'ClearCompleted\')', data => {
+    console.log(data.grey)
+    return JSON.parse(data).d.Enable
+  })
+  test('/odata/TODO_SRV/TodoItemSet', data => {
+    const records = JSON.parse(data).d.results
+    console.log(JSON.stringify(records[0]).gray)
+    return records.length !== 0
+  })
+
+  // Express
+  const express = require('express')
+  const app = express()
+
+  app.get('/', function (req, res) {
+    // window.jQuery.ajax({
+    //
+    //     success: function () {
+    //
+    //     }
+    // })
+    // debugger
+    res.send('Hello World!')
+  })
+
+  app.listen(8080, function () {
+    console.log('listening on port 8080'.yellow)
+  })
 }
