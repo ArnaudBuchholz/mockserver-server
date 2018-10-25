@@ -5,7 +5,6 @@ const $content = Symbol('content')
 
 // Simple XHR hook to handle local files (it can't be done with sinon / nise or it conflicts with SapUI5's one)
 module.exports = XMLHttpRequest => {
-
   const {
     addEventListener,
     open,
@@ -13,14 +12,14 @@ module.exports = XMLHttpRequest => {
     send
   } = XMLHttpRequest.prototype
 
-  XMLHttpRequest.prototype.addEventListener = function (eventName, callback) {
+  XMLHttpRequest.prototype.addEventListener = function (eventName, eventHandler) {
     if (!this[$events]) {
       this[$events] = {}
     }
     if (!this[$events][eventName]) {
       this[$events][eventName] = []
     }
-    this[$events][eventName].push(callback)
+    this[$events][eventName].push(eventHandler)
     return addEventListener.apply(this, arguments)
   }
 
@@ -33,9 +32,9 @@ module.exports = XMLHttpRequest => {
   }
 
   XMLHttpRequest.prototype.setRequestHeader = function () {
-      if (undefined === this[$content]) {
-          setRequestHeader.apply(this, arguments)
-      }
+    if (undefined === this[$content]) {
+      setRequestHeader.apply(this, arguments)
+    }
   }
 
   XMLHttpRequest.prototype.send = function () {
@@ -50,12 +49,11 @@ module.exports = XMLHttpRequest => {
       'readystatechange,load'
         .split(',')
         .forEach(eventName => this[$events][eventName]
-          ? this[$events][eventName].forEach(callback => callback(this))
+          ? this[$events][eventName].forEach(eventHandler => eventHandler(this))
           : 0
         )
       return
     }
     send.apply(this, arguments)
   }
-
 }
