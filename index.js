@@ -11,12 +11,15 @@ const read = (type, url) => {
     let content
     if (url.endsWith('css')) {
       content = '/* no style */' // Must not be empty
+    } else if (match[1].startsWith('mock/')) {
+      content = fs.readFileSync(path.join(__dirname, match[1])).toString()
     } else {
       content = fs.readFileSync(path.join(openui5BaseDir, match[1])).toString()
     }
     console.log(type.magenta, 'GET'.cyan, url.cyan, '200'.green, content.length)
     return content
   }
+  debugger
 }
 
 class ResourceLoader extends jsdom.ResourceLoader {
@@ -70,4 +73,6 @@ const browser = new JSDOM(fs.readFileSync('./index.html').toString(), {
 })
 
 const window = browser.window
-console.log(window.location.toString())
+window.ready = () => {
+  console.log('ready to go !'.yellow)
+}
