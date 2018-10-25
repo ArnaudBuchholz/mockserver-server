@@ -1,4 +1,4 @@
-/* global sap, jQuery */
+/* global sap */
 sap.ui.require([
   'sap/ui/core/util/MockServer'
 
@@ -65,8 +65,6 @@ sap.ui.require([
     autoRespond: true,
     autoRespondAfter: 10
   })
-
-  debugger
 
   // load local mock data
   _oMockServer.simulate('resources/mock/metadata.xml', {
