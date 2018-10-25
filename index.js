@@ -1,7 +1,7 @@
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 const fs = require('fs')
-const read = require('read')
+const read = require('./read')
 
 class ResourceLoader extends jsdom.ResourceLoader {
   fetch (url, options) {
@@ -35,6 +35,8 @@ const browser = new JSDOM(fs.readFileSync('./index.html').toString(), {
       navigationStart: new Date().getTime(),
       fetchStart: new Date().getTime()
     }
+    // Wrap XHR
+    require('./xhr')(window.XMLHttpRequest)
   }
 })
 
