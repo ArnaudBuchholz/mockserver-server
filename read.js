@@ -14,9 +14,6 @@ module.exports = (type, url) => {
     }
     let resourcePath
     if (match[1].startsWith('mock/')) {
-      if (match[1].endsWith('xml')) {
-        debugger // TODO remove
-      }
       resourcePath = path.join(__dirname, match[1])
     } else {
       resourcePath = path.join(openui5BaseDir, match[1])
