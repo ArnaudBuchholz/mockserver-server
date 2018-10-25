@@ -3,4 +3,4 @@ Reusing [OpenUI5 MockServer](https://openui5.hana.ondemand.com/#/api/sap.ui.core
 
 ## Mocking
 
-Current mock data is based on [bubu-cms](https://github.com/ArnaudBuchholz/bubu-cms)
+Current mock data is based on [training-ui5con18-opa](https://github.com/ArnaudBuchholz/training-ui5con18-opa)
