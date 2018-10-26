@@ -1,9 +1,12 @@
 /* global sap */
 sap.ui.require([
-  'sap/ui/core/util/MockServer'
+  'sap/ui/core/util/MockServer',
+  'sap/base/Log'
 
-], function (MockServer) {
+], function (MockServer, Log) {
   'use strict'
+
+  Log.setLevel(Log.Level.ERROR) 
 
   var CONST = {
     OData: {
