@@ -80,26 +80,31 @@ window.ready = () => {
   const express = require('express')
   const app = express()
   const logger = require('morgan')
+  const bodyParser = require('body-parser')
 
   app.use(logger('dev'))
+  app.use(bodyParser.text({
+      type: '*/*'
+  }))
 
   app.all('*', function (req, res) {
     window.jQuery.ajax({
-        method: req.method,
-        url: req.url,
-        headers: req.headers,
-        complete: jqXHR => {
-            jqXHR.getAllResponseHeaders()
-                .split('\n')
-                .filter(header => header)
-                .forEach(header => {
-                    const pos = header.indexOf(':')
-                    res.set(header.substr(0, pos).trim(), header.substr(pos + 1).trim())
-                })
-            res
-              .status(jqXHR.status)
-              .send(jqXHR.responseText)
-        }
+      method: req.method,
+      url: req.url,
+      headers: req.headers,
+      data: req.body,
+      complete: jqXHR => {
+        jqXHR.getAllResponseHeaders()
+          .split('\n')
+          .filter(header => header)
+          .forEach(header => {
+            const pos = header.indexOf(':')
+            res.set(header.substr(0, pos).trim(), header.substr(pos + 1).trim())
+          })
+        res
+          .status(jqXHR.status)
+          .send(jqXHR.responseText)
+      }
     })
   })
 
