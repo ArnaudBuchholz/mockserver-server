@@ -6,7 +6,7 @@ sap.ui.require([
 ], function (MockServer, Log) {
   'use strict'
 
-  Log.setLevel(Log.Level.ERROR) 
+  Log.setLevel(Log.Level.ERROR)
 
   var CONST = {
     OData: {
