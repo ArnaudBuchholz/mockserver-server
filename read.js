@@ -1,7 +1,7 @@
 require('colors')
 const fs = require('fs')
 const path = require('path')
-const openui5BaseDir = path.join(__dirname, 'bower_components/openui5-sap.ui.core/resources')
+const openui5BaseDir = path.join(__dirname, 'node_modules/@openui5/sap.ui.core/dist/resources')
 
 module.exports = (type, url) => {
   try {
