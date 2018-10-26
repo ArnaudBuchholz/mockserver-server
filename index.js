@@ -79,16 +79,28 @@ window.ready = () => {
   // Express
   const express = require('express')
   const app = express()
+  const logger = require('morgan')
 
-  app.get('/', function (req, res) {
-    // window.jQuery.ajax({
-    //
-    //     success: function () {
-    //
-    //     }
-    // })
-    // debugger
-    res.send('Hello World!')
+  app.use(logger('dev'))
+
+  app.get('*', function (req, res) {
+    window.jQuery.ajax({
+        method: req.method,
+        url: req.url,
+        headers: req.headers,
+        complete: jqXHR => {
+            jqXHR.getAllResponseHeaders()
+                .split('\n')
+                .filter(header => header)
+                .forEach(header => {
+                    const pos = header.indexOf(':')
+                    res.set(header.substr(0, pos).trim(), header.substr(pos + 1).trim())
+                })
+            res
+              .status(jqXHR.status)
+              .send(jqXHR.responseText)
+        }
+    })
   })
 
   app.listen(8080, function () {
