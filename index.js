@@ -83,7 +83,7 @@ window.ready = () => {
 
   app.use(logger('dev'))
 
-  app.get('*', function (req, res) {
+  app.all('*', function (req, res) {
     window.jQuery.ajax({
         method: req.method,
         url: req.url,
