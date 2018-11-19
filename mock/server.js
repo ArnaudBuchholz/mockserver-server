@@ -70,8 +70,9 @@ sap.ui.require([
   })
 
   // load local mock data
-  _oMockServer.simulate('resources/mock/metadata.xml', {
-    sMockdataBaseUrl: 'resources/mock'
+  debugger
+  _oMockServer.simulate('node/mock/metadata.xml', {
+    sMockdataBaseUrl: 'node/mock'
   })
 
   // Trace requests
