@@ -1,9 +1,10 @@
 require('../node-ui5/factory')({
-  verbose: true,
+  // bootstrapLocation: 'resources/sap-ui-core-dbg.js',
   exposeAsGlobals: true,
   resourceroots: {
-    node: __dirname
-  }
+    myApp: __dirname
+  },
+  verbose: true
 }).then(() => {
 
   process.on('unhandledRejection', error => {
@@ -11,7 +12,7 @@ require('../node-ui5/factory')({
   })
 
   sap.ui.require([
-    "node/mock/server"
+    "myApp/mock/server"
   ], function () {
     // Express
     const express = require('express')
