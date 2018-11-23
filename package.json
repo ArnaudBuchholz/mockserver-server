@@ -22,10 +22,11 @@
   },
   "homepage": "https://github.com/ArnaudBuchholz/MockServerServer#readme",
   "dependencies": {
+    "@openui5/sap.ui.core": "^1.60.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
-    "node-ui5": "^0.9.3",
+    "node-ui5": "^0.9.7",
     "sync-request": "^6.0.0"
   },
   "devDependencies": {
