@@ -1,4 +1,4 @@
-require('../node-ui5/factory')({
+require('node-ui5/factory')({
   // bootstrapLocation: 'resources/sap-ui-core-dbg.js',
   exposeAsGlobals: true,
   resourceroots: {
