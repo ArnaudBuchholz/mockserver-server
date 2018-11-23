@@ -3,8 +3,7 @@ require('node-ui5/factory')({
   exposeAsGlobals: true,
   resourceroots: {
     myApp: __dirname
-  },
-  verbose: true
+  }
 }).then(() => {
 
   process.on('unhandledRejection', error => {
