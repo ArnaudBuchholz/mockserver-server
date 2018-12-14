@@ -1,3 +1,4 @@
+/* global sap */
 require('node-ui5/factory')({
   // bootstrapLocation: 'resources/sap-ui-core-dbg.js',
   exposeAsGlobals: true,
@@ -5,13 +6,12 @@ require('node-ui5/factory')({
     myApp: __dirname
   }
 }).then(() => {
-
   process.on('unhandledRejection', error => {
     console.log('unhandledRejection'.red, error.message.gray)
   })
 
   sap.ui.require([
-    "myApp/mock/server"
+    'myApp/mock/server'
   ], function () {
     // Express
     const express = require('express')
@@ -49,5 +49,4 @@ require('node-ui5/factory')({
       console.log('listening on port 8080'.yellow)
     })
   })
-
 })
