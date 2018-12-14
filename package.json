@@ -26,8 +26,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
-    "node-ui5": "^0.9.7",
-    "sync-request": "^6.0.0"
+    "node-ui5": "^0.9.8"
   },
   "devDependencies": {
     "standard": "^12.0.1"
