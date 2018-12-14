@@ -135,27 +135,38 @@ sap.ui.require([
     }
   })
 
-  // Update of a todo list item
+  function _handleUpdateBody (oXhr, sTodoItemGuid) {
+    // Inject or remove completion date/time
+    var oBody = JSON.parse(oXhr.requestBody)
+    if (sTodoItemGuid === STOP_PROCRASTINATING_GUID) {
+      oXhr.respond(400, {
+        'Content-Type': 'text/plain;charset=utf-8'
+      }, "I'll start tomorrow !")
+      return true // Skip default processing
+    }
+    if (oBody[CONST.OData.entityProperties.todoItem.completed]) {
+      oBody[CONST.OData.entityProperties.todoItem.completionDate] = _getJSONDateReplacer(new Date())
+    } else {
+      oBody[CONST.OData.entityProperties.todoItem.completionDate] = null
+    }
+    oXhr.requestBody = JSON.stringify(oBody)
+    return false // Keep default processing
+  }
+
+  var _updatePath = new RegExp(CONST.OData.entityNames.todoItemSet + "\\(guid(?:'|%27)([^'%]+)(?:'|%27)\\)")
+
+  // Update (MERGE) of a todo list item
   aRequests.push({
     method: 'MERGE',
-    path: CONST.OData.entityNames.todoItemSet + "\\(guid'([^']+)'\\)",
-    response: function (oXhr, sTodoItemGuid) {
-      // Inject or remove completion date/time
-      var oBody = JSON.parse(oXhr.requestBody)
-      if (sTodoItemGuid === STOP_PROCRASTINATING_GUID) {
-        oXhr.respond(400, {
-          'Content-Type': 'text/plain;charset=utf-8'
-        }, "I'll start tomorrow !")
-        return true // Skip default processing
-      }
-      if (oBody[CONST.OData.entityProperties.todoItem.completed]) {
-        oBody[CONST.OData.entityProperties.todoItem.completionDate] = _getJSONDateReplacer(new Date())
-      } else {
-        oBody[CONST.OData.entityProperties.todoItem.completionDate] = null
-      }
-      oXhr.requestBody = JSON.stringify(oBody)
-      return false // Keep default processing
-    }
+    path: _updatePath,
+    response: _handleUpdateBody
+  })
+
+  // Update (PUT) of a todo list item
+  aRequests.push({
+    method: 'PUT',
+    path: _updatePath,
+    response: _handleUpdateBody
   })
 
   // Getting a todo list item with filter
