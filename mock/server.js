@@ -170,17 +170,17 @@ sap.ui.require([
   })
 
   // Getting a todo list item with filter
-  aRequests.push({
-    method: 'GET',
-    path: CONST.OData.entityNames.todoItemSet + '\\?.*\\$filter=.*',
-    response: function (oXhr) {
-      // Simulate error
-      oXhr.respond(400, {
-        'Content-Type': 'text/plain;charset=utf-8'
-      }, 'Get failed')
-      return true // Skip default processing
-    }
-  })
+  // aRequests.push({
+  //   method: 'GET',
+  //   path: CONST.OData.entityNames.todoItemSet + '\\?.*\\$filter=.*',
+  //   response: function (oXhr) {
+  //     // Simulate error
+  //     oXhr.respond(400, {
+  //       'Content-Type': 'text/plain;charset=utf-8'
+  //     }, 'Get failed')
+  //     return true // Skip default processing
+  //   }
+  // })
 
   // Clear Completed
   aRequests.push({
