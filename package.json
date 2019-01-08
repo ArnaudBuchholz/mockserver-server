@@ -26,7 +26,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
-    "node-ui5": "^0.9.8"
+    "node-ui5": "^0.9.9"
   },
   "devDependencies": {
     "colors": "^1.3.3",
