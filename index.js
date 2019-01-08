@@ -24,7 +24,11 @@ require('node-ui5/factory')({
       type: '*/*'
     }))
 
-    app.all('*', function (req, res) {
+    if (process.argv.length > 2) {
+      app.use(express.static(process.argv[2]))
+    }
+
+    app.all('/odata/TODO_SRV/*', function (req, res) {
       window.jQuery.ajax({
         method: req.method,
         url: req.url,
