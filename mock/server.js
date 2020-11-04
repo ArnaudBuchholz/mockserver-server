@@ -8,7 +8,7 @@ sap.ui.require([
 
   Log.setLevel(Log.Level.ERROR)
 
-  var CONST = {
+  const CONST = {
     OData: {
       entityNames: {
         todoItemSet: 'TodoItemSet',
@@ -39,27 +39,27 @@ sap.ui.require([
     }
   }
 
-  var STOP_PROCRASTINATING_GUID = '0MOCKSVR-TODO-MKII-MOCK-00000000'
+  const STOP_PROCRASTINATING_GUID = '0MOCKSVR-TODO-MKII-MOCK-00000000'
 
   function _getJSONDateReplacer (dValue) {
     return '/Date(' + dValue.getTime() + ')/'
   }
 
-  var _lastTodoItemId = 0
+  let _lastTodoItemId = 0
 
   function _getNewItemGuid () {
-    var sNewId = (++_lastTodoItemId).toString()
+    const sNewId = (++_lastTodoItemId).toString()
     return '0MOCKSVR-TODO-MKII-DYNK-00000000'.substr(0, 32 - sNewId.length) + sNewId
   }
 
   function _setIfNotSet (oTodoItemSet, sPropertyName, vDefaultValue) {
-    if (!oTodoItemSet.hasOwnProperty(sPropertyName)) {
+    if (!Object.prototype.hasOwnProperty.call(oTodoItemSet, sPropertyName)) {
       oTodoItemSet[sPropertyName] = vDefaultValue
     }
   }
 
   // init the mockserver instance
-  var _oMockServer = new MockServer({
+  const _oMockServer = new MockServer({
     rootUri: '/odata/TODO_SRV/' // ensure there is a trailing slash
   })
 
@@ -88,14 +88,14 @@ sap.ui.require([
   // })
 
   // Generate random items
-  var aTodoItemSet = _oMockServer.getEntitySetData(CONST.OData.entityNames.todoItemSet)
-  var sDateMax = '/Date(' + new Date(2099, 11, 31).getTime() + ')/'
-  var sDateNow = '/Date(' + (new Date().getTime() - 60000) + ')/'
-  var iCount = 100
-  for (var idx = 0; idx < iCount; ++idx) {
-    var oNewTodoItemSet = {}
+  const aTodoItemSet = _oMockServer.getEntitySetData(CONST.OData.entityNames.todoItemSet)
+  const sDateMax = '/Date(' + new Date(2099, 11, 31).getTime() + ')/'
+  const sDateNow = '/Date(' + (new Date().getTime() - 60000) + ')/'
+  const iCount = 100
+  for (let idx = 0; idx < iCount; ++idx) {
+    const oNewTodoItemSet = {}
 
-    var sGuid = _getNewItemGuid()
+    const sGuid = _getNewItemGuid()
     oNewTodoItemSet[CONST.OData.entityProperties.todoItem.guid] = sGuid
     oNewTodoItemSet[CONST.OData.entityProperties.todoItem.title] = 'Random stuff ' + idx
     oNewTodoItemSet.__metadata = {
@@ -119,7 +119,7 @@ sap.ui.require([
   })
   _oMockServer.setEntitySetData(CONST.OData.entityNames.todoItemSet, aTodoItemSet)
 
-  var aRequests = _oMockServer.getRequests()
+  const aRequests = _oMockServer.getRequests()
 
   // Creation of a todo list item
   aRequests.push({
@@ -127,7 +127,7 @@ sap.ui.require([
     path: CONST.OData.entityNames.todoItemSet,
     response: function (oXhr) {
       // Initialize some fields
-      var oBody = JSON.parse(oXhr.requestBody)
+      const oBody = JSON.parse(oXhr.requestBody)
       oBody[CONST.OData.entityProperties.todoItem.completed] = false
       oBody[CONST.OData.entityProperties.todoItem.completionDate] = null
       oXhr.requestBody = JSON.stringify(oBody)
@@ -137,7 +137,7 @@ sap.ui.require([
 
   function _handleUpdateBody (oXhr, sTodoItemGuid) {
     // Inject or remove completion date/time
-    var oBody = JSON.parse(oXhr.requestBody)
+    const oBody = JSON.parse(oXhr.requestBody)
     if (sTodoItemGuid === STOP_PROCRASTINATING_GUID) {
       oXhr.respond(400, {
         'Content-Type': 'text/plain;charset=utf-8'
@@ -153,7 +153,7 @@ sap.ui.require([
     return false // Keep default processing
   }
 
-  var _updatePath = new RegExp(CONST.OData.entityNames.todoItemSet + "\\(guid(?:'|%27)([^'%]+)(?:'|%27)\\)")
+  const _updatePath = new RegExp(CONST.OData.entityNames.todoItemSet + "\\(guid(?:'|%27)([^'%]+)(?:'|%27)\\)")
 
   // Update (MERGE) of a todo list item
   aRequests.push({
@@ -187,15 +187,15 @@ sap.ui.require([
     method: CONST.OData.functionImports.clearCompleted.method,
     path: CONST.OData.functionImports.clearCompleted.name,
     response: function (oXhr) {
-      var aInitialTodoItemSet = _oMockServer.getEntitySetData(CONST.OData.entityNames.todoItemSet)
+      const aInitialTodoItemSet = _oMockServer.getEntitySetData(CONST.OData.entityNames.todoItemSet)
 
-      var aClearedTodoItemSet = aInitialTodoItemSet.filter(function (oTodoItem) {
+      const aClearedTodoItemSet = aInitialTodoItemSet.filter(function (oTodoItem) {
         return !oTodoItem[CONST.OData.entityProperties.todoItem.completed]
       })
 
-      var oReturnType = {}
+      const oReturnType = {}
 
-      var oResult = {}
+      const oResult = {}
       _oMockServer.setEntitySetData(CONST.OData.entityNames.todoItemSet, aClearedTodoItemSet)
       oReturnType[CONST.OData.functionImports.clearCompleted.returnType.count] = aInitialTodoItemSet.length - aClearedTodoItemSet.length
       oResult[CONST.OData.functionImports.clearCompleted.name] = oReturnType
