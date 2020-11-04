@@ -3,7 +3,7 @@
 require('colors')
 
 function assert (condition, label) {
-  var result
+  let result
   if (condition) {
     result = 'OK'.green
   } else {
