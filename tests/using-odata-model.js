@@ -71,7 +71,7 @@ require('node-ui5') // TODO update after publishing node-ui5
       'node-ui5/promisify'
     ], async function (ODataModel) {
       console.log('Creating ODataModel...')
-      const model = new ODataModel({ serviceUrl /*, useBatch: false*/ })
+      const model = new ODataModel({ serviceUrl /*, useBatch: false */ })
       console.log('Reading $metadata')
       await model.metadataLoaded()
       await checkAppConfiguration(model)
