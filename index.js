@@ -1,56 +1,57 @@
+'use strict'
+
 /* global sap */
 require('node-ui5/factory')({
-  // bootstrapLocation: 'resources/sap-ui-core-dbg.js',
   exposeAsGlobals: true,
   resourceroots: {
     myApp: __dirname
   }
 }).then(() => {
   process.on('unhandledRejection', error => {
-    console.log('unhandledRejection'.red, error.message.gray)
+    console.log('unhandledRejection'.red, error.stack.gray)
   })
+
+  console.log('loading mock server...')
 
   sap.ui.require([
     'myApp/mock/server'
   ], function () {
-    // Express
-    const express = require('express')
-    const app = express()
-    const logger = require('morgan')
-    const bodyParser = require('body-parser')
+    const { body, serve } = require('reserve')
 
-    app.use(logger('dev'))
-    app.use(bodyParser.text({
-      type: '*/*'
-    }))
-
-    if (process.argv.length > 2) {
-      app.use(express.static(process.argv[2]))
-    }
-
-    app.all('/odata/TODO_SRV/*', function (req, res) {
-      window.jQuery.ajax({
-        method: req.method,
-        url: req.url,
-        headers: req.headers,
-        data: req.body,
-        complete: jqXHR => {
-          jqXHR.getAllResponseHeaders()
-            .split('\n')
-            .filter(header => header)
-            .forEach(header => {
-              const pos = header.indexOf(':')
-              res.set(header.substr(0, pos).trim(), header.substr(pos + 1).trim())
-            })
-          res
-            .status(jqXHR.status)
-            .send(jqXHR.responseText)
+    serve({
+      port: 8080,
+      mappings: [{
+        match: /\/odata\/TODO_SRV\/*/,
+        custom: async (request, response) => {
+          let done
+          const promise = new Promise(resolve => {
+            done = resolve
+          })
+          window.jQuery.ajax({
+            method: request.method,
+            url: request.url,
+            headers: request.headers,
+            data: await body(request),
+            complete: jqXHR => {
+              const headers = jqXHR.getAllResponseHeaders()
+                .split('\n')
+                .filter(header => header)
+                .reduce((map, header) => {
+                  const parsed = /([^:]+):(.*)/.exec(header)
+                  map[parsed[1].trim()] = parsed[2].trim()
+                  return map
+                }, {})
+              response.writeHead(jqXHR.status, headers)
+              response.end(jqXHR.responseText)
+              done()
+            }
+          })
+          return promise
         }
+      }]
+    })
+      .on('ready', ({ url }) => {
+        console.log(`Mock server running at ${url}`)
       })
-    })
-
-    app.listen(8080, function () {
-      console.log('listening on port 8080'.yellow)
-    })
   })
 })
