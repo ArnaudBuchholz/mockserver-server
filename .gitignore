@@ -3,21 +3,12 @@ Thumbs.db
 Desktop.ini
 
 # Git override
-
 .gitconfig
 
 # NPM
 node_modules/
 npm-debug.log
 
-# Bower
-bower_components/
-
-# Editors
-
-.idea
-
 # Temporary files
-
 tmp/
 debug.log
